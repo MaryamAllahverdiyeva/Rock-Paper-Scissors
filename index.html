@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>  
+   <h1>Paper, Scissors and Rock </h1>   
+   <div id="result"> </div>
+   <div id="computer_choice"> </div>
+   <div id="player_choice"> </div>
+   <div id="wins"> Wins: 0 </div>
+   <div id="losses">Losses: 0 </div>
+   <script>
+     characters={
+      1: "paper",
+      2:"scissors",
+      3: "rock",
+      100: "Your choice is wrong, enter one r, p or s "
+     }
+      var player_guess;
+      var comp_guess;
+      var wins=0;
+      var losses=0;
+     document.onkeyup=function(e){
+      comp_guess=Math.floor(Math.random()*3+1)      
+      console.log("Comp choice: "+characters[comp_guess])
+       if(e.key==='p'){player_guess=1;}
+       else if(e.key==='s'){player_guess=2;}
+       else if(e.key==='r'){player_guess=3;}
+       else{
+           alert("There is no such choice!")
+           player_guess=100;
+          
+           }
+      console.log("Player choice: "+characters[player_guess])
+        document.querySelector('#player_choice').innerHTML="Your choice: "+characters[player_guess]
+        document.querySelector('#computer_choice').innerHTML="Computer choice: "+characters[comp_guess]
+
+    //   if(Math.abs(player_guess-comp_guess)===1){
+    //     if(player_guess>comp_guess){
+    //      wins++; 
+    //      document.querySelector('#wins').innerHTML="Wins: "+wins;
+    //      document.querySelector('#result').innerHTML="<h3> Winner! </h3>"
+    //      }
+    //     else{
+    //      losses++;
+    //      document.querySelector('#losses').innerHTML="Losses: "+losses;
+    //      document.querySelector('#result').innerHTML="<h3> Loser! </h3>"}
+    //    }
+    //   else if(Math.abs(player_guess-comp_guess)===2){
+    //    if(player_guess>comp_guess){
+    //        losses++;
+    //        document.querySelector('#losses').innerHTML="Losses: "+losses;
+    //        document.querySelector('#result').innerHTML="<h3> Loser! </h3>"
+    //        }
+    //     else{
+    //         wins++;
+    //         document.querySelector('#wins').innerHTML="Wins: "+wins;
+    //         document.querySelector('#result').innerHTML="<h3> Winner! </h3>"
+    //         }
+    //   }  
+    //   else if(Math.abs(player_guess-comp_guess)===0){ 
+    //     document.querySelector('#result').innerHTML="<h3> Draws! </h3>"
+    //   }
+
+
+      if(Math.abs(player_guess-comp_guess)===1 && player_guess>comp_guess || 
+      Math.abs(player_guess-comp_guess)===2 && player_guess<comp_guess){
+        wins++; 
+         document.querySelector('#wins').innerHTML="Wins: "+wins;
+         document.querySelector('#result').innerHTML="<h3> Winner! </h3>"
+      }
+      else if(Math.abs(player_guess-comp_guess)===1 && player_guess<comp_guess ||
+       Math.abs(player_guess-comp_guess)===2 && player_guess>comp_guess){
+        losses++;
+           document.querySelector('#losses').innerHTML="Losses: "+losses;
+           document.querySelector('#result').innerHTML="<h3> Loser! </h3>"
+       }
+       else if(Math.abs(player_guess-comp_guess)===0){ 
+        document.querySelector('#result').innerHTML="<h3> Draws! </h3>"
+      }
+      console.log("W: "+wins)
+      console.log("L: "+losses)
+
+     }
+
+
+    </script>
+</body>
+</html>
